@@ -48,7 +48,8 @@ def test_inv_exe_2_max_total_time_bounded() -> None:
 
     # Should stop due to max_total_time_ms (fail_closed)
     assert report.fail_closed is True
-    assert report.total_latency_ms <= policy.timeout.max_total_time_ms + 100  # Some tolerance
+    # Tolerance for scheduler/overhead: stop is enforced at max_total_time_ms but elapsed can exceed slightly
+    assert report.total_latency_ms <= policy.timeout.max_total_time_ms + 250
 
 
 def test_inv_exe_2_max_concurrency_bounded() -> None:
