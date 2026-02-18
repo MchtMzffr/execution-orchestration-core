@@ -1,3 +1,6 @@
+# Decision Ecosystem — execution-orchestration-core
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """INV-EXE-3: Fail-closed behavior tests."""
 
 import pytest

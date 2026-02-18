@@ -1,3 +1,6 @@
+# Decision Ecosystem — execution-orchestration-core
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Execution orchestrator: main API (INV-EXE-1 through INV-EXE-6)."""
 
 import logging

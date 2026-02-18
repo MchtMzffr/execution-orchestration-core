@@ -1,3 +1,8 @@
+<!--
+Decision Ecosystem — execution-orchestration-core
+Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+SPDX-License-Identifier: MIT
+-->
 # Architecture — execution-orchestration-core
 
 ## Overview
@@ -22,10 +27,12 @@
 **Types:**
 - `RetryPolicy`: Exponential backoff, max retries
 - `TimeoutPolicy`: Per-action and total timeouts
-- `IdempotencyPolicy`: Idempotency key generation
+- `IdempotencyPolicy`: Idempotency key generation (policy only; see Idempotency status below)
 - `ExecutionPolicy`: Complete policy bundle
 
 **Invariant:** All policies are bounded (INV-EXE-2)
+
+**Idempotency (current status):** Policy and model support `idempotency_enabled` and `key_generator` (e.g. `"action+context_hash"`). Key generation is **not yet implemented**: attempts are created with `idempotency_key=None`. When implementing, use `policy.idempotency.key_generator` to derive a key and set it on each `ExecutionAttempt` so that trace/verification data is complete.
 
 ### 3. Models (`model.py`)
 

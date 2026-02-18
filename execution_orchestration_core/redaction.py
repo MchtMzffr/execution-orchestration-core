@@ -1,3 +1,6 @@
+# Decision Ecosystem — execution-orchestration-core
+# Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+# SPDX-License-Identifier: MIT
 """Execution log/report redaction (INV-EXE-4: secret hygiene)."""
 
 from typing import Any

@@ -1,3 +1,8 @@
+<!--
+Decision Ecosystem — execution-orchestration-core
+Copyright (c) 2026 Mücahit Muzaffer Karafil (MchtMzffr)
+SPDX-License-Identifier: MIT
+-->
 # Parameter Index — Execution Context Keys
 
 **Purpose:** Document execution context keys used by execution-orchestration-core  
