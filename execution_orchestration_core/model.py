@@ -18,13 +18,15 @@ class ExecutionStatus(str, Enum):
 
 @dataclass
 class ExecutionAttempt:
-    """Single execution attempt result."""
+    """Single execution attempt result (INV-EXE-SEC-1: no raw message in serializable surface)."""
 
     action: Action
     status: ExecutionStatus
     attempt_number: int
     latency_ms: int
-    error_message: str | None = None
+    error_type: str | None = None  # e.g. type(e).__name__ or "executor_rejected"
+    error_code: str | None = None  # e.g. "executor_failed", "timeout", "execution_exception"
+    error_message: str | None = None  # deprecated: do not set; use error_type/error_code
     idempotency_key: str | None = None
 
 

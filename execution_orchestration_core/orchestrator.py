@@ -114,14 +114,15 @@ def execute(
                             if backoff_ms > 0:
                                 time.sleep(backoff_ms / 1000.0)
                         else:
-                            # Final attempt failed
+                            # Final attempt failed (INV-EXE-SEC-1: no raw message)
                             report.attempts.append(
                                 ExecutionAttempt(
                                     action=action,
                                     status=ExecutionStatus.FAILED,
                                     attempt_number=attempt_number,
                                     latency_ms=attempt_latency_ms,
-                                    error_message=error_msg,
+                                    error_code="executor_failed",
+                                    error_type="executor_rejected",
                                 )
                             )
                             report.failed_count += 1
@@ -136,14 +137,15 @@ def execute(
                         if backoff_ms > 0:
                             time.sleep(backoff_ms / 1000.0)
                     else:
-                        # Final attempt exception
+                        # Final attempt exception (INV-EXE-SEC-1: type/code only)
                         report.attempts.append(
                             ExecutionAttempt(
                                 action=action,
                                 status=ExecutionStatus.FAILED,
                                 attempt_number=attempt_number,
                                 latency_ms=attempt_latency_ms,
-                                error_message=str(e),
+                                error_type=type(e).__name__,
+                                error_code="execution_exception",
                             )
                         )
                         report.failed_count += 1
