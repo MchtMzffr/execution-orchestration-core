@@ -36,15 +36,19 @@ def redact_execution_log(log_data: dict[str, Any]) -> dict[str, Any]:
         # Check if key matches any redact pattern
         should_redact = any(pattern in key_lower for pattern in REDACT_PATTERNS)
 
-        if should_redact:
-            redacted[k] = "[REDACTED]"
-        elif isinstance(v, dict):
-            redacted[k] = redact_execution_log(v)
+        # Process nested structures first (recursive)
+        if isinstance(v, dict):
+            processed_value = redact_execution_log(v)
+            # Keep the structure even if key matches pattern (nested keys are processed)
+            redacted[k] = processed_value
         elif isinstance(v, list):
             redacted[k] = [
                 redact_execution_log(item) if isinstance(item, dict) else item
                 for item in v
             ]
+        elif should_redact:
+            # Redact non-dict values if key matches pattern
+            redacted[k] = "[REDACTED]"
         else:
             redacted[k] = v
 
