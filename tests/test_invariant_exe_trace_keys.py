@@ -40,5 +40,5 @@ def test_inv_t1_execution_trace_keys_registered() -> None:
 
     # For now, exec.* keys may not be registered yet (acceptable)
     # But format must be valid
-    format_errors = [e for e in errors if "invalid" in e]
+    format_errors = [e for e in errors if "invalid" in e or "key_not_str" in e]
     assert len(format_errors) == 0, f"Format errors: {format_errors}"
