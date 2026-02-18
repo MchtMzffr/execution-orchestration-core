@@ -1,6 +1,6 @@
 """Execution policies: retry, backoff, timeout, idempotency."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
