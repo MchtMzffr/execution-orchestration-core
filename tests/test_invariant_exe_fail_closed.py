@@ -3,11 +3,10 @@
 # SPDX-License-Identifier: MIT
 """INV-EXE-3: Fail-closed behavior tests."""
 
-import pytest
 from decision_schema.types import Action, FinalDecision
 
-from execution_orchestration_core.model import ExecutionReport, ExecutionStatus
-from execution_orchestration_core.orchestrator import ActionExecutor, execute
+from execution_orchestration_core.model import ExecutionStatus
+from execution_orchestration_core.orchestrator import execute
 from execution_orchestration_core.policies import ExecutionPolicy
 
 

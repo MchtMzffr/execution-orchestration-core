@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: MIT
 """INV-EXE-5: Secret/log hygiene tests."""
 
-import pytest
 from execution_orchestration_core.redaction import redact_execution_log
 
 

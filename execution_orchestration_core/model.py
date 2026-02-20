@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 
-from decision_schema.types import Action, FinalDecision
+from decision_schema.types import Action
 
 
 class ExecutionStatus(str, Enum):
@@ -59,7 +59,7 @@ class ExecutionReport:
     def to_external_dict(self) -> dict[str, Any]:
         """
         Convert to PacketV2.external dict (trace extension keys).
-        
+
         Keys follow INV-T1 format: exec.* namespace.
         """
         return {

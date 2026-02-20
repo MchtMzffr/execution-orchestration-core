@@ -32,20 +32,20 @@ def execute(
 ) -> ExecutionReport:
     """
     Execute FinalDecision actions with retry/timeout/idempotency/kill-switch gating.
-    
+
     Invariants:
     - INV-EXE-1: Deterministic (same input → same plan/ordering)
     - INV-EXE-2: Bounded (max_retries, max_total_time_ms, max_concurrency)
     - INV-EXE-3: Fail-closed (exception → failed/denied + marker)
     - INV-EXE-4: Kill-switch compliance (ops kill-switch → deny)
     - INV-EXE-5: Secret hygiene (redaction in logs/reports)
-    
+
     Args:
         final_decision: FinalDecision to execute
         context: Execution context (includes ops-health signals)
         policy: Execution policy (retry/timeout/idempotency)
         executor: Action executor function (domain-specific adapter)
-    
+
     Returns:
         ExecutionReport with attempt results and trace keys
     """

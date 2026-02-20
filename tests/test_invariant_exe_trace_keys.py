@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: MIT
 """INV-T1: Execution trace keys format tests."""
 
-import pytest
 from decision_schema.trace_registry import is_valid_trace_key, validate_external_dict
 
 from execution_orchestration_core.model import ExecutionReport

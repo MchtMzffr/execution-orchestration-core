@@ -18,10 +18,10 @@ class RetryPolicy:
     def backoff_ms(self, attempt_number: int) -> int:
         """
         Compute backoff delay for attempt number (exponential backoff).
-        
+
         Args:
             attempt_number: 0-indexed attempt number (0 = first attempt)
-        
+
         Returns:
             Backoff delay in milliseconds
         """

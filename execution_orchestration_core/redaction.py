@@ -23,10 +23,10 @@ REDACT_PATTERNS = frozenset(
 def redact_execution_log(log_data: dict[str, Any]) -> dict[str, Any]:
     """
     Redact secret patterns from execution log data.
-    
+
     Args:
         log_data: Execution log dict (input/output/context)
-    
+
     Returns:
         Redacted dict with [REDACTED] markers
     """
@@ -46,8 +46,7 @@ def redact_execution_log(log_data: dict[str, Any]) -> dict[str, Any]:
             redacted[k] = processed_value
         elif isinstance(v, list):
             redacted[k] = [
-                redact_execution_log(item) if isinstance(item, dict) else item
-                for item in v
+                redact_execution_log(item) if isinstance(item, dict) else item for item in v
             ]
         elif should_redact:
             # Redact non-dict values if key matches pattern
